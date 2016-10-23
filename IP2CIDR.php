@@ -35,7 +35,7 @@ class IP2CIDR {
             $maxdiff = 32 - floor($x);
             $new_maxsize = $maxsize < $maxdiff ? $maxdiff : $maxsize;
             $cidrlist[] = long2ip($startaddr) . "/" . $new_maxsize;
-            $startaddr += pow(2, (32 - $maxsize));
+            $startaddr += pow(2, (32 - $new_maxsize));
         }
         return $cidrlist;
     }
