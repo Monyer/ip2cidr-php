@@ -1,8 +1,8 @@
 <?php
 
-final class IPToCIDR {
+class IP2CIDR {
 
-    static function iprange_to_cidr($startip, $endip) {
+    function iprange_to_cidr($startip, $endip) {
         $cidr2mask = [0x00000000, 0x80000000, 0xC0000000,
             0xE0000000, 0xF0000000, 0xF8000000,
             0xFC000000, 0xFE000000, 0xFF000000,
@@ -33,14 +33,14 @@ final class IPToCIDR {
             }
             $x = log($endaddr - $startaddr + 1) / log(2);
             $maxdiff = 32 - floor($x);
-            $maxsize = $maxsize < $maxdiff ? $maxdiff : $maxsize;
-            $cidrlist[] = long2ip($startaddr) . "/" . $maxsize;
+            $new_maxsize = $maxsize < $maxdiff ? $maxdiff : $maxsize;
+            $cidrlist[] = long2ip($startaddr) . "/" . $new_maxsize;
             $startaddr += pow(2, (32 - $maxsize));
         }
         return $cidrlist;
     }
 
-    static function solveCIDR($startip, $endip) {
+    function solveCIDR($startip, $endip) {
         if (!preg_match("/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/", $startip) ||
                 !preg_match("/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/", $endip)) {
             throw new Exception("IP address is not valid");
@@ -49,7 +49,7 @@ final class IPToCIDR {
                 ($startip == "255.255.255.255") || ($endip == "255.255.255.255")) {
             throw new Exception("Special IP address error");
         }
-        return self::iprange_to_cidr($startip, $endip);
+        return $this->iprange_to_cidr($startip, $endip);
     }
 
 }
