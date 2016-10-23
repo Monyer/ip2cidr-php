@@ -33,4 +33,5 @@ This gem cannot use either 0.0.0.0 or 255.255.255.255 as inputs and will return 
 ## Authors
 
 Monyer
+
 Guys in https://github.com/viruslab/ip2cidr
