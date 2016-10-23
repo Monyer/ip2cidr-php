@@ -10,7 +10,8 @@ A simple Ruby gem for converting a range of IP addresses to a list of CIDR block
 Using the class:
 
 ```
-$arr_cidr = IPToCIDR::solveCIDR("192.168.0.1", "192.168.0.16");
+$ip2cidr = new IP2CIDR();
+$arr_cidr = $ip2cidr->solveCIDR("192.168.0.1", "192.168.0.16");
 var_dump($arr_cidr);
 ```
 ```
